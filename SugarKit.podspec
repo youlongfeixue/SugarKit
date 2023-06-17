@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SugarKit'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'SugarKit - Swift工具语法糖.'
 
 # This description is used to generate tags and improve search results.
@@ -36,6 +36,14 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
 
   s.source_files = 'SugarKit/Classes/**/*'
+    # 语法糖 convenience + extension
+    s.subspec 'Sugar' do |sgr|
+        sgr.source_files = 'SugarKit/Classes/Sugar/**/*'
+    end
+    
+    
+    
+    
   
   s.swift_version = '5.0'
   
