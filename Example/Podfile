@@ -1,0 +1,16 @@
+use_frameworks!
+
+platform :ios, '10.0'
+
+
+target 'SugarKit_Example' do
+  pod 'SugarKit', :path => '../'
+
+  pod 'SnapKit'
+
+  target 'SugarKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

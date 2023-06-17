@@ -1,0 +1,9 @@
+1. 【pod trunk push --allow-warnings】过程中
+Authentication token is invalid or unverified. Either verify it with the email that was sent or register a new session.
+
+解决：
+1. 执行命令：pod trunk register '12345678@qq.com' 'MacleChen' --description='mac pro'   
+2. 在自己邮箱里面去点击，那个邮件里面的连接，就可以了（如果找不到那个邮件，多等个几分钟的。或着去垃圾箱中找找，有可能是腾讯把他等垃圾邮件了）
+3. 返回终端里面继续执行命令：pod trunk push CZFScrollAdView.podspec --allow-warnings
+
+
