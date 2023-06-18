@@ -7,9 +7,9 @@
 
 import Foundation
 
-class DeviceTool {
+public class DeviceTool {
     
-    class var appName: String {
+    public class var appName: String {
         var name = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
         if name?.count == 0 {
             name = Bundle.main.infoDictionary?["CFBundleName"] as? String
@@ -17,29 +17,29 @@ class DeviceTool {
         return name!
     }
     
-    class var iphoneName: String {
+    public class var iphoneName: String {
         UIDevice.current.name
     }
     
-    class var systemVersion: String {
+    public class var systemVersion: String {
         UIDevice.current.systemVersion
     }
     
-    class var bundleIdentifier: String {
+    public class var bundleIdentifier: String {
         Bundle.main.bundleIdentifier ?? ""
     }
     
-    class var bundleVersion: String {
+    public class var bundleVersion: String {
         Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
     }
     
-    class var bundleShortVersionString: String {
+    public class var bundleShortVersionString: String {
         Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     }
     
     
     
-    private class var deviceModel: String {
+    public class var deviceModel: String {
         var systemInfo = utsname()
         uname(&systemInfo)
         
@@ -52,7 +52,7 @@ class DeviceTool {
         return identifier
     }
     
-    class var deviceType: String {
+    public class var deviceType: String {
         let identifier = deviceModel
         
         // iPhone
@@ -212,15 +212,15 @@ class DeviceTool {
     }
     
     
-    class var isIPhone: Bool {
+    public class var isIPhone: Bool {
         UIDevice.current.model == "iPhone"
     }
     
-    class var isIPad: Bool {
+    public class var isIPad: Bool {
         UIDevice.current.model == "iPad"
     }
     
-    class var isBangSeries: Bool {
+    public class var isBangSeries: Bool {
         var isBang = false
         
         if UIDevice.current.userInterfaceIdiom == .phone,
@@ -237,49 +237,49 @@ class DeviceTool {
         return isBang;
     }
     
-    class var isIPhoneXSeries: Bool {
+    public class var isIPhoneXSeries: Bool {
         isIPhone && isBangSeries
     }
     
-    class var isIPhoneNotBang: Bool {
+    public class var isIPhoneNotBang: Bool {
         isIPhone && !isBangSeries
     }
     
     
-    class var isIPadBangSeries: Bool {
+    public class var isIPadBangSeries: Bool {
         isIPad && isBangSeries
     }
     
-    class var isIPadNotBang: Bool {
+    public class var isIPadNotBang: Bool {
         isIPad && !isBangSeries
     }
     
-    class var isSimulator: Bool {
+    public class var isSimulator: Bool {
         false
     }
     
     
     // MARK: - frame
     
-    class var statusBarOffset: CGFloat {
+    public class var statusBarOffset: CGFloat {
         isBangSeries ? 24 : 0
     }
     
-    class var bottomBarOffset: CGFloat {
+    public class var bottomBarOffset: CGFloat {
         isBangSeries ? 34 : 0
     }
     
-    class var statusBarHeight: CGFloat {
+    public class var statusBarHeight: CGFloat {
         20.0 + statusBarOffset
     }
     
     /// statusBarHeight + navBar.height
-    class var navigationTopBarHeight: CGFloat {
+    public class var navigationTopBarHeight: CGFloat {
         44 + statusBarHeight
     }
     
     /// tabBar.height + bottomBarOffset
-    class var bottomBarHeight: CGFloat {
+    public class var bottomBarHeight: CGFloat {
         49 + bottomBarOffset
     }
     
