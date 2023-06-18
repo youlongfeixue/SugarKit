@@ -1,6 +1,6 @@
 //
 //  SKNetworkManager.swift
-//  SKSugarSwiftExample
+//  SugarKitExample
 //
 //  Created by Sky on 2020/7/2.
 //  Copyright © 2020 Sky. All rights reserved.

@@ -38,9 +38,23 @@ Pod::Spec.new do |s|
   s.source_files = 'SugarKit/Classes/**/*'
     # 语法糖 convenience + extension
     s.subspec 'Sugar' do |sgr|
-        sgr.source_files = 'SugarKit/Classes/Sugar/**/*'
+        sgr.source_files = 'SugarKit/Classes/Sugar/**/*, SugarKit/Classes/Sugar/*'
     end
     
+    # 视图库
+    s.subspec 'View' do |v|
+      v.source_files = 'SugarKit/Classes/View/**/*, SugarKit/Classes/View/*'
+    end
+
+    # 工具类
+    s.subspec 'Tool' do |t|
+      t.source_files = 'SugarKit/Classes/Tool/**/*, SugarKit/Classes/Tool/*'
+    end
+
+    # 功能类
+    s.subspec 'Util' do |u|
+      u.source_files = 'SugarKit/Classes/Util/**/*, SugarKit/Classes/Util/*'
+    end
     
     
     

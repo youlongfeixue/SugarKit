@@ -10,17 +10,17 @@ import UIKit
 
 public extension UIColor {
 
-    convenience init(hex: Int32) {
+    convenience init(hex: Int32, alpha: CGFloat = 1.0) {
         self.init(
-            red: CGFloat((hex & 0xFF0000) >> 16) / 255.0, 
-            green: CGFloat((hex & 0x00FF00) >> 8) / 255.0, 
-            blue: CGFloat(hex & 0x0000FF) / 255.0, 
-            alpha: 1
+            red:    CGFloat((hex & 0xFF0000) >> 16) / 255.0, 
+            green:  CGFloat((hex & 0x00FF00) >> 8)  / 255.0, 
+            blue:   CGFloat(hex & 0x0000FF) / 255.0, 
+            alpha: alpha
         )
     }
 
-    convenience init(hexStr: String) {
-        var str = hexStr.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
+    convenience init(hexStr: String, alpha: CGFloat = 1.0) {
+        var str = hexStr.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased() //uppercased
         if str.hasPrefix("0X") { str = String(str.suffix(from: str.index(str.startIndex, offsetBy: 2))) }
         if str.hasPrefix("#") { str = String(str.suffix(from: str.index(str.startIndex, offsetBy: 1))) }
         
@@ -37,7 +37,7 @@ public extension UIColor {
             red: CGFloat(r) / 255.0, 
             green: CGFloat(g) / 255.0, 
             blue: CGFloat(b) / 255.0, 
-            alpha: 1
+            alpha: alpha
         )
     }
 }
