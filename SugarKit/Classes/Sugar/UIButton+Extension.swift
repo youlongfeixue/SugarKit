@@ -136,8 +136,12 @@ public extension UIButton {
     {
         self.init()
         
-        setImage(UIImage.init(named: imageNameNormal), for: .normal)
-        setImage(UIImage.init(named: imageNameHighlighted), for: .highlighted)
+        if imageNameNormal.count > 0 {
+            setImage(UIImage.init(named: imageNameNormal), for: .normal)
+        }
+        if imageNameHighlighted.count > 0 {
+            setImage(UIImage.init(named: imageNameHighlighted), for: .highlighted)
+        }
         
         sizeToFit()
     }

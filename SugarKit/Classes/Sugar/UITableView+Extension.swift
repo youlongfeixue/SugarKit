@@ -87,7 +87,30 @@ public extension UITableView {
 }
 
 
-
+// MARK: - setup
+public extension UITableView {
+    
+    /// setupTableViwe
+    func sk_setupTableViwe() {
+        
+        layoutMargins = UIEdgeInsets()
+        separatorInset = UIEdgeInsets()
+        
+        tableFooterView = UIView()
+        
+        if #available(iOS 11.0, *) {
+            contentInsetAdjustmentBehavior = .never
+        }
+        if #available(iOS 13.0, *) {
+            automaticallyAdjustsScrollIndicatorInsets = false
+        }
+        if #available(iOS 15.0, *) {
+            sectionHeaderTopPadding = 0
+        }
+    }
+    
+    
+}
 
 
 
