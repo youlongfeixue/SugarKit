@@ -11,12 +11,14 @@ import Photos
 
 public class AuthorityManager {
     
-    public class func requestPhotoAuthority(_ complition: (()->())?) {
+    public init() {}
+    
+    public class func requestPhotoAuthority(_ complition: ((PHAuthorizationStatus)->Void)?) {
         DispatchQueue.global().async {
             PHPhotoLibrary.requestAuthorization { authorizationStatus in
                 DispatchQueue.main.async {
                     if complition != nil {
-                        complition!()
+                        complition!(authorizationStatus)
                     }
                 }
             }
