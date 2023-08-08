@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SugarKit'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'SugarKit - Swift工具语法糖.'
 
 # This description is used to generate tags and improve search results.
