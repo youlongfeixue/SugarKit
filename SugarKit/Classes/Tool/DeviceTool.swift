@@ -9,6 +9,7 @@ import Foundation
 
 public class DeviceTool {
     
+    /// display name or bundle name
     public class var appName: String {
         var name = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
         if name?.count == 0 {
@@ -17,6 +18,7 @@ public class DeviceTool {
         return name!
     }
     
+    /// device name
     public class var iphoneName: String {
         UIDevice.current.name
     }
