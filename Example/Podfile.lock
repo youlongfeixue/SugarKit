@@ -2,7 +2,13 @@ PODS:
   - SnapKit (5.6.0)
   - SugarKit (0.1.1):
     - SugarKit/Sugar (= 0.1.1)
+    - SugarKit/Tool (= 0.1.1)
+    - SugarKit/Util (= 0.1.1)
+    - SugarKit/View (= 0.1.1)
   - SugarKit/Sugar (0.1.1)
+  - SugarKit/Tool (0.1.1)
+  - SugarKit/Util (0.1.1)
+  - SugarKit/View (0.1.1)
 
 DEPENDENCIES:
   - SnapKit
@@ -18,7 +24,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
-  SugarKit: 803751aaa48c436e7936127018389b989442ce87
+  SugarKit: f02e6f756f04f110428c1df047ac8a5d765fa3d6
 
 PODFILE CHECKSUM: a905488bd7c4aae96e50e0d5e48de0fffa3c5ccf
 
