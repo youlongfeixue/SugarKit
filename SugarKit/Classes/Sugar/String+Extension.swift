@@ -132,8 +132,8 @@ public extension String {
     
     func index(of key: String) -> Int {
         guard let ran = range(of: key) else { return -1 }
-        _ = ran.upperBound.utf16Offset(in: self)
-        return sk_nsRange(by: ran)!.location
+        return ran.lowerBound.utf16Offset(in: self)
+//        return sk_nsRange(by: ran)!.location
     }
     
     func index(of key: String) -> NSRange? {
@@ -187,8 +187,73 @@ public extension String {
 }
 
 
-// MARK: -  字符串截取 subString
+// MARK: -  字符串截取 subString (prefix/ suffix)
 public extension String {
+    
+    /// 截取并返回（从0 到 倒数index）之间的字符串 - （去掉后面 index 个字符）
+    func prefix(toBehindIndex index: Int) -> String {
+        if index >= count {
+            return ""
+        }
+        // str[startIndex ..< count - index]
+        return String(prefix(count - index))
+    }
+    
+    
+    /// 截取给定key后面的字符串并返回，截取的长度为给定长度。
+    ///
+    /// - Parameters:
+    ///   - key: key
+    ///   - length: 给定长度（要返回字符串的长度）
+    ///   - containsKey: 要返回的字符串是否包含key
+    /// - Returns: 返回截取结果字符串
+    func suffix(key: String, length: Int, containsKey: Bool = false) -> String {
+        if !self.contains(key) { return "" }
+        
+        let range: Range = self.range(of: key)!
+        let startIndex = containsKey ? range.lowerBound : range.upperBound
+        let str = self[startIndex ..< self.index(startIndex, offsetBy: length)]
+        
+        return String(str)
+    }
+    
+    func suffix(fromIndex: Int) -> String {
+        String(self.suffix(from: Index(utf16Offset: fromIndex, in: self)))
+    }
+    
+    /// 截取从 fromIndex 到 toIndex 之间的字符串 (fromIndex 不能大于 toIndex)
+    /// - 默认包含fromIndex不包含toIndex
+    ///
+    /// - Parameters:
+    ///   - fromIndex: fromIndex 默认为0
+    ///   - toIndex: toIndex
+    ///   - containsFromIndex: containsFromIndex
+    ///   - containsToIndex: containsToIndex
+    /// - Returns: 返回之间的字符串
+    func substring(fromIndex: Int = 0, toIndex: Int, containsFromIndex: Bool = true, containsToIndex: Bool = false) -> String
+    {
+        //        if fromIndex < 0 || toIndex < 0 { gxprint("fromIndex 与 toIndex 都不能小于0  ！！！") }
+        //        if fromIndex > toIndex { gxprint("fromIndex 不能大于 toIndex ！！！") }
+        assert(fromIndex >= 0 && toIndex >= 0, "fromIndex 不能大于 toIndex ！！！")
+        assert(fromIndex <= toIndex, "fromIndex 不能大于 toIndex ！！！")
+        
+        let from: Int = containsFromIndex ? fromIndex : fromIndex + 1
+        let to: Int = containsToIndex ? toIndex + 1 : toIndex
+        
+        let startIndex = self.index(self.startIndex, offsetBy: from)
+        let endIndex = self.index(self.startIndex, offsetBy: to + 1)
+        
+        let result = String(self[startIndex ..< endIndex])
+        return result
+    }
+    
+    /// 截取从 fromIndex 到结尾之间的字符串
+    ///
+    /// - Parameter fromIndex: fromIndex
+    /// - Returns: 返回之间的字符串
+    func substring(fromIndex: Int) -> String {
+        return substring(fromIndex: fromIndex, toIndex: count - 1)
+    }
     
     /// 截取 startKey 到 endKey 之间的字符串 (可能有多个内容，全部截取)，返回截取的字符串内容数组
     func subString(between startKey: String, and endKey: String, option: SKSubStringContainsOption) -> [String] {
@@ -265,6 +330,24 @@ public extension String {
     }
     
 }
+
+
+ 
+// MARK: - Split
+public extension String {
     
+    /// 使用正则表达式以 pattern 字符串为 key 分割字符串为 [String] 字符串数组，并且会自动过滤字符串长度为0的元素
+    /// - 例：str = "123|5哈哈||", key = "|"  ->  result = ["123", "5哈哈"]
+    ///
+    /// - Parameter pattern: 分隔符字符串
+    func split(key pattern: String) -> [String] {
+        components(separatedBy: pattern).filter{ $0.count > 0 }
+    }
+    
+    
+    
+    
+    
+}   
     
     
